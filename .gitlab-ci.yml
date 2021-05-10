@@ -1,0 +1,12 @@
+---
+image: continuumio/miniconda3:4.8.2
+
+before_script:
+  - . $HOME/.bashrc
+  - conda env create -f environment.yaml
+  - conda activate smd
+
+run-test:
+  script:
+    - pip install .
+    - python -m pytest -v --color=yes
