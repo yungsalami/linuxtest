@@ -77,8 +77,10 @@ class Generator(BaseGenerator):
         # Fügen Sie hier den Code ein um Zufallszahlen aus der
         # angegebenen Verteilung zu erzeugen
 
+        values = -tau * np.log(1-u)
+
         # dummy, so the code works. Can be removed / replaced
-        values = np.zeros(size)
+        #values = np.zeros(size)
 
         return values
 
@@ -89,11 +91,12 @@ class Generator(BaseGenerator):
 
         Blatt 3, Aufgabe 2b)
         '''
+        u = self.uniform(size=size)
         # Fügen Sie hier den Code ein um Zufallszahlen aus der
         # angegebenen Verteilung zu erzeugen
-
+        values = (u*(x_max**(1-n)-x_min**(1-n))+x_min**(1-n))**(1/(1-n))
         # dummy, so the code works. Can be removed / replaced
-        values = np.zeros(size)
+        #values = np.zeros(size)
 
 
         return values
@@ -105,9 +108,10 @@ class Generator(BaseGenerator):
 
         Blatt 3, Aufgabe 2c)
         '''
+        u = self.uniform(size=size)
         # Fügen Sie hier den Code ein um Zufallszahlen aus der
         # angegebenen Verteilung zu erzeugen
-
+        values = np.tan(np.pi*u-np.pi/2)
         # dummy, so the code works. Can be removed / replaced
         values = np.zeros(size)
 
