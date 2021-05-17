@@ -24,8 +24,8 @@ class LCG:
 
         Blatt 3, Aufgabe 1
         '''
-
-        # Fügen Sie hier Ihren Code ein, um den LCG korrekt zu implementieren
+        self.state = (self.state * self.a + self.c) % self.m 
+        
 
     def random_raw(self, size=None):
         '''
@@ -51,11 +51,9 @@ class LCG:
         '''
         Draw uniforn random numbers by converting them from the raw numbers'''
         raw = self.random_raw(size=size)
+        u = raw/self.m
 
-        # Fügen Sie hier ihren Code ein, um die rohen Zufallszahlen
-        # zu kontinuierlich gleichverteilten Zufallszahlen zwischen
-        # low und high zu transformation
-        result = raw
+        result = low + u * (high - low)
         return result
 
 
