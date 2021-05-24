@@ -121,6 +121,8 @@ class MultipleScatteringParticle(BaseParticle):
         #
         # ---------------------------------------------------------------------
         # --- Replace Code Here
+        gen = Generator(seed = 0)
+        #absdist = 
         # ---------------------------------------------------------------------
 
         # dummy solution to pass unit tests (this solution is not correct!)
