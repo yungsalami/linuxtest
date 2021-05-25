@@ -18,26 +18,16 @@ RESET=`tput sgr0`
 
 all: Loesung.pdf
 
-plots: Aufgabe1/plot.pdf Aufgabe2/plot.pdf Aufgabe3/plot.pdf Aufgabe4/plot.pdf
+plots: Aufgabe9/plot.pdf Aufgabe10/plot.pdf
 
-Aufgabe1/plot.pdf: Aufgabe1/Aufgabe1.py matplotlibrc header-matplotlib.tex 
+Aufgabe9/plot.pdf: Aufgabe9/Aufgabe9.py matplotlibrc header-matplotlib.tex 
 				@echo 'Python-Plots:'
-				TEXINPUTS="$(call translate,$(pwd):)" python Aufgabe1/Aufgabe1.py
+				TEXINPUTS="$(call translate,$(pwd):)" python Aufgabe9/Aufgabe9.py
 				@echo
 
-Aufgabe2/plot.pdf: Aufgabe2/Aufgabe2.py matplotlibrc header-matplotlib.tex 
+Aufgabe10/plot.pdf: Aufgabe10/Aufgabe10.py matplotlibrc header-matplotlib.tex 
 				@echo 'Python-Plots:'
-				TEXINPUTS="$(call translate,$(pwd):)" python Aufgabe2/Aufgabe2.py
-				@echo
-
-Aufgabe3/plot.pdf: Aufgabe3/Aufgabe3.py matplotlibrc header-matplotlib.tex 
-				@echo 'Python-Plots:'
-				TEXINPUTS="$(call translate,$(pwd):)" python Aufgabe3/Aufgabe3.py
-				@echo
-
-Aufgabe4/plot.pdf: Aufgabe4/Aufgabe4.py matplotlibrc header-matplotlib.tex 
-				@echo 'Python-Plots:'
-				TEXINPUTS="$(call translate,$(pwd):)" python Aufgabe4/Aufgabe4.py
+				TEXINPUTS="$(call translate,$(pwd):)" python Aufgabe10/Aufgabe10.py
 				@echo
 
 again:
@@ -53,7 +43,7 @@ build:
 
 .DELETE_ON_ERROR:
 # hier weitere Abhängigkeiten für build/Loesung.pdf deklarieren:
-Loesung.pdf: Loesung.tex Aufgabe1/* Aufgabe1/plot.pdf Aufgabe2/* Aufgabe2/plot.pdf Aufgabe3/* Aufgabe3/plot.pdf Aufgabe4/* Aufgabe4/plot.pdf header.tex | build
+Loesung.pdf: Loesung.tex Aufgabe9/* Aufgabe9/plot.pdf Aufgabe10/* Aufgabe10/plot.pdf header.tex | build
 				@TEXINPUTS="$(call translate,build:)" lualatex \
 								--output-directory=build \
 								--interaction=nonstopmode \
