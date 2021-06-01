@@ -121,12 +121,28 @@ class MultipleScatteringParticle(BaseParticle):
         #
         # ---------------------------------------------------------------------
         # --- Replace Code Here
+        absdist = random_state.exponential(self.absorption_length)
+        dist = 0
+
+        energy_depositions = [(self.x, self.y, 0., self.direction)]
+
+        while(dist<absdist):
+            scatdist = random_state.exponential(self.scattering_length)
+            deltapsi = self.angle_distribution.rvs(random_state)
+            self.direction = (self.direction + deltapsi)%(2*np.pi)
+            self.x = self.x + scatdist * np.cos(self.direction)
+            self.y = self.y + scatdist * np.sin(self.direction)
+
+            energy_depositions.append((self.x, self.y, 0., self.direction))
+            dist = dist + scatdist
+
+        energy_depositions[len(energy_depositions)-1] = (self.x, self.y, self.energy, self.direction)
         # ---------------------------------------------------------------------
 
         # dummy solution to pass unit tests (this solution is not correct!)
         # this is just a dummy energy deposition list with the starting vertex
         # and one interaction point at a distance of 10 units in x-direction
-        energy_depositions = [(self.x, self.y, 0., self.direction),
-                              (10., 0., self.energy, 0.)]
+        #energy_depositions = [(self.x, self.y, 0., self.direction),
+        #                      (10., 0., self.energy, 0.)]
 
         return energy_depositions

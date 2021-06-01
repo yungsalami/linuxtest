@@ -113,7 +113,7 @@ class Generator(BaseGenerator):
         # angegebenen Verteilung zu erzeugen
         values = np.tan(np.pi*u-np.pi/2)
         # dummy, so the code works. Can be removed / replaced
-        values = np.zeros(size)
+        #values = np.zeros(size)
 
 
         return values
