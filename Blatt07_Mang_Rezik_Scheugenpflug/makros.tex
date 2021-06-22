@@ -1,0 +1,64 @@
+
+\usepackage{expl3}
+\usepackage{xparse}
+
+\ExplSyntaxOn
+
+    \NewDocumentCommand \e {m} { % e-Funktion
+        \symup{e}^{#1}
+    }
+
+    \NewDocumentCommand \dif {m} { 
+        \symup{d}{#1}
+    }
+
+    \NewDocumentCommand \err {m} { % zur Darstellung von Fehlern
+        \symup{\Delta}{#1}
+    }
+
+    \NewDocumentCommand \inv {m} { % Inverse
+        \frac{1}{#1}
+    }
+
+    \NewDocumentCommand \Dif {m} { % für Ableitungen
+        \frac{\symup{d}}{\dif{#1}}
+    }
+
+    \NewDocumentCommand \spi {} {
+        \symup{\pi}
+    }
+
+    \NewDocumentCommand \xprod {m m}{ % Kreuzprodukt
+        \symbf{#1} \times \symbf{#2}
+    }
+
+    \NewDocumentCommand \Betrag {m}{ % Betragsfunktion
+        \bigl|{#1}\bigr|
+    }
+
+    \NewDocumentCommand \prozent {m}{ % Zahl mit Prozentzeichen
+        \SI{#1}{\percent}
+    }
+
+    \NewDocumentCommand \sinv {m} { % schräge Inverse (wie bei sfrac)
+        \sfrac{1}{#1}
+    }
+
+    \NewDocumentCommand \partDif {m m}{ % für partielle Ableitungen
+        \frac{\partial^#2}{\partial #1^#2}
+    }
+
+    \NewDocumentCommand \Difk {m m} { % für höhere Ableitungen
+        \frac{\symup{d}^{#2}}{\symup{d} {#1}^{#2}}
+    }
+
+    \NewDocumentCommand \Norm{m}{ % Norm
+        \Betrag{\Betrag{#1}}
+    }
+
+    \NewDocumentCommand \Erw{m}{
+        \bigl< #1 \bigr>
+    }
+
+
+\ExplSyntaxOff
